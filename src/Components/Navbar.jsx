@@ -106,7 +106,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <a href="https://github.com/Moksina-Akter/Ph-Assignment-08" className="btn bg-gradient-to-r from-[#632EE3] to-[#9F62F2]">
-            <i className="fa-brands fa-github text-2xl"></i>
+            <i className="fa-brands fa-github text-2xl text-white"></i>
             <span className="text-white">Contribute</span>
           </a>
         </div></div>

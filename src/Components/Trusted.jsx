@@ -3,7 +3,7 @@ import React from 'react';
 const Trusted = () => {
     return (
         <div className='bg-gradient-to-r from-[#632EE3] to-[#9F62F2] '>
-            <h1 className='text-white text-4xl font-bold p-4 pt-6 text-center'>Trusted by Millions, Built for You</h1>
+            <h1 className='text-white text-4xl font-bold p-4 md:pt-10 text-center'>Trusted by Millions, Built for You</h1>
 
             <div className="flex justify-between items-center p-9 max-w-7xl mx-auto">
                 <div className='flex flex-col justify-center items-center gap-2 '>

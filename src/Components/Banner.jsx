@@ -7,7 +7,7 @@ const Banner = () => {
         <>
             <div className=" max-w-7xl mx-auto space-y-5">
                 <h1 className='text-6xl pt-4 text-center font-bold'> We Build <br /> <span className='text-[#632EE3]'>Productive</span> Apps</h1>
-                <p className='text-xl text-center text-gray-600'>At <span className='text-[#632EE3] font-bold'>HERO.IO</span>, we craft innovative apps designed to make everyday life simpler, smarter, and more exciting. <br /> Our goal is to turn your ideas into digital experiences that truly make an impact. </p>
+                <p className='text-xl text-center text-gray-600'>At <span className='text-[#1e0b48] font-bold'>HERO.IO</span>, we craft innovative apps designed to make everyday life simpler, smarter, and more exciting. <br /> Our goal is to turn your ideas into digital experiences that truly make an impact. </p>
                 <div className=" flex justify-center items-center">
                     <div className=" p-4">
                         <a href="https://play.google.com/store/games?hl=en">

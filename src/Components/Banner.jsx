@@ -1,5 +1,5 @@
-import googlePlay from '../assets/google-play.png'
-import app from '../assets/App-Store.png'
+import googlePlay from '../assets/google-play-removebg-preview.png'
+import app from '../assets/App_Store-removebg-preview.png'
 import bannerImg from '../assets/hero.png'
 
 const Banner = () => {

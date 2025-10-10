@@ -5,9 +5,17 @@ import Card from "./Card";
 import useApp from "../hook/useHook";
 
 const Home = () => {
-    const { app, loading, error } = useApp();
+    const { app,loading } = useApp();
     const showCard = app.slice(0, 8);
 
+    if (loading) {
+        return <> 
+        <div className="flex justify-center items-center h-80">
+          <div className="w-12 h-12 border-4 border-t-transparent border-purple-500 rounded-full animate-spin"></div>
+        </div>
+
+        </>   
+    }
     return (
         <>
             <Banner />

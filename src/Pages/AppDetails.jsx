@@ -1,4 +1,5 @@
 
+
 import { useParams } from "react-router";
 import useApp from "../hook/useHook";
 import download from "../assets/icon-downloads.png";
@@ -10,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-// import Charts from "./Charts";
+import Charts from "./Charts";
 
 const AppDetails = () => {
     const { id } = useParams();
@@ -39,10 +40,12 @@ const AppDetails = () => {
     if (!findData) {
         console.log("URL ID:", id);
         console.log("Data IDs:", app.map((a) => a.id));
-        return (
-            <p className="text-center font-bold py-10 text-4xl">
-                App Not Found
+        return ( <>
+        <p className="text-center font-bold py-5  text-4xl">
+                App is Not Found !
             </p>
+            <p className="text-center pb-5"> The app you are for does not exist or has been removed.</p></>
+            
         );
     }
 
@@ -55,29 +58,22 @@ const AppDetails = () => {
         companyName,
         description,
         size,
+        ratings
     } = findData || {};
 
-
-
-
-    //   const installedApps = JSON.parse(localStorage.getItem("installList")) || [];
-    // const [install, setInstall] = useState(
-    //   installedApps.some((a) => a.id === Number(id))
-    // );
     const handleClick = () => {
         const existingList = JSON.parse(localStorage.getItem("installList"));
         let updatedList = [];
         if (existingList) {
             const isDupli = existingList.some(p => p.id === findData.id);
-            if (isDupli) return 'hey'
+            if (isDupli) return  '';
             updatedList = [...existingList, findData];
         } else {
             updatedList.push(findData);
         }
         localStorage.setItem("installList", JSON.stringify(updatedList));
         setInstalled(true)
-        //    updateInstallList(findData)
-        //    toast("Installed")
+       
         toast.success(`Wow ${title} Installed Successfully!`);
     };
 
@@ -123,7 +119,7 @@ const AppDetails = () => {
 
             <div className="py-10">
                 <p className="font-bold text-xl">Ratings</p>
-                {/* <Charts/> */}
+                <Charts  ratings={ratings}/>
             </div>
 
             <hr className="text-gray-400 border-1 " />
@@ -139,137 +135,6 @@ const AppDetails = () => {
 
 export default AppDetails;
 
-/*
-import { useParams } from "react-router";
-import useApp from "../hook/useHook";
-import download from '../assets/icon-downloads.png'
-import rating from '../assets/icon-ratings.png'
-import review from '../assets/icon-review.png'
-
-const AppDetails = () => {
-
-    //     const { id } = useParams();
-    //     const {app,loading,error} = useApp()
-    //     const data = app.find((item) => String(item.id) === String(id));
-    //     console.log(data);
-    //     if (loading) {
-    //         return <p>Loading........</p>
-    //     }
-
-    // if (error) {
-    //   return <p>Error: {error.message}</p>;
-    // }
-
-    // if (!data) {
-    //   return <p>No app found for ID: {id}</p>;
-    // }
-
-    // const {title, image, size, description, reviews, ratingAvg, downloads } = data;
-
-    const { id } = useParams();
-    const { app } = useApp() || [];
-    const findData = app.find((data) => data.id === Number(id));
-    const {
-        image,
-        title,
-        reviews,
-        ratingAvg,
-        // companyName,
-        downloads,
-        // ratings,
-        description,
-        size,
-    } = findData || {};
-
-     console.log(findData);
-
-    if (!findData) {
-        return <p className="text-center font-bold py-10 text-4xl">App Not Found</p>
-    }
-
-
-    // if (error) {
-    //   return <p>Error: {error.message}</p>;
-    // }
-
-    // if (!data) {
-    //   return <p>No app found for ID: {id}</p>;
-    // }
-
-    // const {title, image, size, description, reviews, ratingAvg, downloads } = data;
 
 
 
-    //   const installedApps = JSON.parse(localStorage.getItem("installList")) || [];
-    // const [install, setInstall] = useState(
-    //   installedApps.some((a) => a.id === Number(id))
-    // );
-    //   const handleClick = () => {
-
-    //    setInstall(true)
-    //    updateInstallList(findData)
-    //    toast("Installed")
-
-    //   };
-
-    //     const { id } = useParams();
-    //     const {app,loading,error} = useApp()
-    //     const data = app.find((item) => String(item.id) === String(id));
-    //     console.log(data);
-    //     if (loading) {
-    //         return <p>Loading........</p>
-    //     }
-
-    // if (error) {
-    //   return <p>Error: {error.message}</p>;
-    // }
-
-    // if (!data) {
-    //   return <p>No app found for ID: {id}</p>;
-    // }
-
-    // const {title, image, size, description, reviews, ratingAvg, downloads } = data;
-
-    return (
-        <>
-            <div className="hero bg-base-200 max-w-7xl mx-auto ">
-                <div className="hero-content flex-col lg:flex-row">
-                    <img
-                        src={image}
-                        className="max-w-sm rounded-lg shadow-2xl"
-                    />
-                    <div>
-                        <h1 className="text-5xl font-bold">{title}</h1>
-                        <p className="py-6">
-                            {description}
-                        </p>
-                    </div>
-                    <hr />
-                    <div className="">
-                        <div className='flex flex-col justify-center items-center gap-2 '>
-                            <img src={download} alt="" />
-                            <p className='text-white'>Downloads</p>
-                            <h1 className='font-extrabold text-white text-5xl'>{downloads}</h1>
-                        </div>
-                        <div className='flex flex-col justify-center items-center gap-2 '>
-                            <img src={rating} alt="" />
-                            <p className='text-white'>Average Ratings</p>
-                            <h1 className='font-extrabold text-white text-5xl'>{ratingAvg}</h1>
-                        </div>
-                        <div className='flex flex-col justify-center items-center gap-2 '>
-                            <img src={review} alt="" />
-                            <p className='text-white'>Total Review</p>
-                            <h1 className='font-extrabold text-white text-5xl'>{reviews}</h1>
-                        </div>
-
-                    </div>
-                    <button className="btn btn-primary">Install Now ({size})</button>
-                </div>
-            </div>
-        </>
-    );
-};
-
-export default AppDetails;
-
-*/

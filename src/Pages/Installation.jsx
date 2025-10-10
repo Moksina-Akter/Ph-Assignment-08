@@ -1,87 +1,15 @@
 
-/*
-import useApp from "../hook/useHook";
-import download from "../assets/icon-downloads.png";
-import rating from "../assets/icon-ratings.png";
 
 
-const Installation = () => {
-    const {app,loading} = useApp();
-    
-  if (loading) {
-    return <div className="text-center py-10 text-xl font-bold">Loading...</div>;
-  }
 
-//     const {
-//         image,
-//         title,
-//         ratingAvg,
-//         downloads,
-//         size,
-//     } = app
-// console.log(app);
-    return (
-        <div className="max-w-7xl mx-auto">
-            <div className="p-15 space-y-2">
-                <h1 className="text-4xl font-bold text-center">Your Installed Apps</h1>
-                <p className="text-gray-600 pb-4 text-center">  Explore All Trending Apps on the Market developed by us</p>
-                <div className="flex justify-between max-w-7xl mx-auto">
-                    <h1 className="font-bold text-xl">() Apps Found</h1>
-                    <div className="border-2 border-gray-500 rounded px-3 py-1 flex items-center">
-                        <i className="fa-solid fa-magnifying-glass text-gray-500"></i>
-                        <input type="search" name="" id="" className="p-2 border-none focus:outline-none" placeholder="search Apps" />
-                    </div>
-                </div>
-            </div>
-
-            <div className="">
-                <div className="flex justify-between items-center p-4 bg-base-100 shadow-sm">
-                    <div className="flex gap-3">
-                        <figure>
-                            <img className="w-14 h-14 rounded"
-                                src={image}
-                                alt="Movie" />
-                        </figure>
-                        <div className="">
-                            <h2 className="card-title">{title}</h2>
-                            <div className="flex justify-between">
-                                <div className=" flex justify-between bg-gray-200 rounded gap-2 px-3 py-2">
-                                    <img className='w-5 h-5' src={download} alt="" />
-                                    <span className='text-green-600 font-bold'>{downloads}</span>
-                                </div>
-                                <div className=" flex justify-between bg-amber-100 rounded gap-2 px-3 py-2">
-                                    <img className='w-5 h-5' src={rating} alt="" />
-                                    <span className='text-[#FF8811]  font-bold'> {ratingAvg} </span>
-                                </div>
-                                <span>{size}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="">
-
-                        <button className="btn bg-emerald-400 text-white ">Uninstall</button>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    );
-};
-
-export default Installation;
-
-*/
-
-
-// import useApp from "../hook/useHook";
 import download from "../assets/icon-downloads.png";
 import rating from "../assets/icon-ratings.png";
 import { useEffect, useState } from "react";
 import errorImg from '../assets/error-404.png';
+import { Link } from "react-router";
+import { toast } from 'react-toastify';
 
 const Installation = () => {
-  // const { app } = useApp();
   const [installList, setInstallList] = useState([]);
   const [sort, setSort] = useState('none');
 
@@ -120,17 +48,8 @@ const Installation = () => {
     setInstallList(updatedList);
 
     localStorage.setItem("installList", JSON.stringify(updatedList));
+     toast.success(`Wow Installed Successfully!`);
   }
-
-
-
-  // if (loading) {
-  //   return (
-  //     <div className="flex justify-center items-center h-80">
-  //       <div className="w-12 h-12 border-4 border-t-transparent border-purple-500 rounded-full animate-spin"></div>
-  //     </div>
-  //   );
-  // }
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -155,7 +74,7 @@ const Installation = () => {
         </div>
       </div>
 
-      {/* App List */}
+      
       <div className="space-y-4 mb-6 ">
         {sortedItem.map((item) => (
           <div
@@ -189,7 +108,6 @@ const Installation = () => {
                 </div>
               </div>
             </div>
-
             <button onClick={()=>handleRemove(item.id)} className="btn bg-emerald-400 text-white">Uninstall</button>
           </div>
         ))}
@@ -199,3 +117,13 @@ const Installation = () => {
 };
 
 export default Installation;
+
+
+
+
+
+
+
+
+
+

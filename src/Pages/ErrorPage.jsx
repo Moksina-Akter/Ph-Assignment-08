@@ -1,4 +1,3 @@
-// import { useRouteError } from "react-router";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import errorImg from '../assets/error-404.png';
@@ -6,7 +5,6 @@ import { Link } from "react-router";
 
 
 const ErrorPage = () => {
-    // const error = useRouteError();
 
     return <>
         <Navbar />
